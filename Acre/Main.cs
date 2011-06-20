@@ -30,6 +30,7 @@ namespace Acre
     {
         public void Init()
         {
+            CheckDirs();
             System.Net.ServicePointManager.Expect100Continue = false;
             System.Windows.Forms.Application.ThreadException += new System.Threading.ThreadExceptionEventHandler(Application_ThreadException);
             AppDomain.CurrentDomain.UnhandledException += new UnhandledExceptionEventHandler(CurrentDomain_UnhandledException);
