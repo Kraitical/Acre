@@ -55,9 +55,14 @@ namespace Acre
             ElementHost.EnableModelessKeyboardInterop(a);
         }
 
-        void Application_ThreadException(object sender, System.Threading.ThreadExceptionEventArgs e)
+        private void Application_ThreadException(object sender, System.Threading.ThreadExceptionEventArgs e)
         {
             WriteException(e.Exception);
+        }
+        private void CheckDirs()
+        {
+            if (!Directory.Exists(@".\Cache")) Directory.CreateDirectory(@".\Cache");
+            if (!Directory.Exists(@".\Cache\Torrents")) Directory.CreateDirectory(@".\Cache\Torrents");
         }
         private int[] ids;
         private AnimeEntry[] entries;
