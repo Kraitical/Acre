@@ -17,11 +17,11 @@ namespace CommieSubs.Plugin
         public bool StatusSupported() { return false; }
         public string Name
         { get { return "CommieSubs"; } }
-        private string[] htmlname = { "Astarotte no Omocha!", "Deadman Wonderland", "Denpa Onna to Seishun Otoko",
+        private string[] htmlname = { "Deadman Wonderland", "Denpa Onna to Seishun Otoko",
                               "Hanasaku Iroha", "Nichijou", "The Tatami Galaxy", "Tiger & Bunny", "Steins;Gate",
                               "Maria†Holic Alive", "The World God Only Knows S2", "X-Men"
                            };
-        private int[] ids = { 9736, 6880, 9379, 9289, 10165, 7785, 9941, 9253, 9712, 10080, 6919 };
+        private int[] ids = { 6880, 9379, 9289, 10165, 7785, 9941, 9253, 9712, 10080, 6919 };
         public int[] GetTranslatedAnimeListIds()
         {
 
