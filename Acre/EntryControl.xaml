@@ -1,0 +1,20 @@
+﻿<UserControl x:Class="Acre.EntryControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             mc:Ignorable="d" d:DesignHeight="309" d:DesignWidth="500">
+    <Grid>
+        <Image HorizontalAlignment="Left" Name="pic" Stretch="Fill" Width="225" Height="309" VerticalAlignment="Top" Visibility="Visible" />
+        <ComboBox Margin="231,58,12,0" Name="tlist" Height="23" VerticalAlignment="Top" IsEnabled="False" SelectionChanged="tlist_SelectionChanged" />
+        <CheckBox Content="Notify" HorizontalAlignment="Left" Margin="231,12,0,0" Name="notify" VerticalAlignment="Top" Checked="notify_Checked" Unchecked="notify_Unchecked"/>
+        <CheckBox Content="Automatically add to uTorrent" Height="16" HorizontalAlignment="Left" Margin="231,149,0,0" Name="c_torrent" VerticalAlignment="Top" IsEnabled="False" Checked="c_torrent_Checked" Unchecked="c_torrent_Unchecked" />
+        <TextBox Height="23" Margin="231,194,12,0" Name="t_path" VerticalAlignment="Top" IsEnabled="False" AcceptsReturn="False" TextChanged="t_path_TextChanged" GotFocus="t_path_GotFocus" />
+        <Label Content="Path:" HorizontalAlignment="Left" Margin="231,171,0,0" Name="s_path" VerticalAlignment="Top" IsEnabled="False" />
+        <Button Content="Browse" Height="23" HorizontalAlignment="Right" Margin="0,223,12,0" Name="path_browse" VerticalAlignment="Top" Width="75" Click="path_browse_Click" IsEnabled="False" />
+        <Label Content="Translator Group:" HorizontalAlignment="Left" Margin="231,34,0,0" Name="s_tlist" VerticalAlignment="Top" IsEnabled="False" />
+        <Button Content="Update" Height="23" HorizontalAlignment="Left" Margin="413,274,0,0" Name="manual_update" VerticalAlignment="Top" Width="75" Click="manual_update_Click" />
+        <TextBox Height="22" Margin="231,110,12,0" Name="interval" VerticalAlignment="Top" IsEnabled="False" TextChanged="interval_TextChanged" />
+        <Label Content="Interval(sec):" Height="28" HorizontalAlignment="Left" Margin="231,87,0,0" Name="s_int" VerticalAlignment="Top" IsEnabled="False" />
+    </Grid>
+</UserControl>

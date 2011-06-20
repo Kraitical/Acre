@@ -1,0 +1,138 @@
+ <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+	<channel>
+	<title>shikkakufansubs</title>
+	<link>http://www.nyaa.eu</link>
+	<atom:link href="http://www.nyaa.eu/?page=rss&amp;user=105469" rel="self" type="application/rss+xml" />
+	<description></description><item>
+				<title>[Shikkaku]_Oretachi_ni_Tsubasa_wa_Nai_08_[1280x720][AAC][220E86D7].mkv</title>
+				<category>English-translated Anime</category>
+				<link>http://www.nyaa.eu/?page=download&amp;tid=217219</link>
+				<guid>http://www.nyaa.eu/?page=torrentinfo&amp;tid=217219</guid>
+				<description><![CDATA[#Shikkaku on Rizon
+http://www.fileserve.com/file/ftCp6nb
+				<div>[ 49 seeder(s), 15 leecher(s), 1284 completed - 382.2 MiB ]</div>]]></description>
+				<pubDate>Sat, 28 May 2011 20:34:32 +0000</pubDate>
+			</item><item>
+				<title>[Shikkaku]_Oretachi_ni_Tsubasa_wa_Nai_07_[1280x720][AAC][B8C9F2C3].mkv</title>
+				<category>English-translated Anime</category>
+				<link>http://www.nyaa.eu/?page=download&amp;tid=215256</link>
+				<guid>http://www.nyaa.eu/?page=torrentinfo&amp;tid=215256</guid>
+				<description><![CDATA[http://www.fileserve.com/file/bG47CR9
+
+#Shikkaku on Rizon
+				<div>[ 53 seeder(s), 5 leecher(s), 2316 completed - 359.1 MiB ]</div>]]></description>
+				<pubDate>Fri, 20 May 2011 18:36:16 +0000</pubDate>
+			</item><item>
+				<title>[Shikkaku]_Oretachi_ni_Tsubasa_wa_Nai_06_[1280x720][AAC][3DDE5570].mkv</title>
+				<category>English-translated Anime</category>
+				<link>http://www.nyaa.eu/?page=download&amp;tid=213658</link>
+				<guid>http://www.nyaa.eu/?page=torrentinfo&amp;tid=213658</guid>
+				<description><![CDATA[http://www.fileserve.com/file/gZjKX68
+				<div>[ 32 seeder(s), 2 leecher(s), 2717 completed - 355.6 MiB ]</div>]]></description>
+				<pubDate>Fri, 13 May 2011 19:16:01 +0000</pubDate>
+			</item><item>
+				<title>[Shikkaku]_Oretachi_ni_Tsubasa_wa_Nai_05_[1280x720][AAC][BF8E99DA].mkv</title>
+				<category>English-translated Anime</category>
+				<link>http://www.nyaa.eu/?page=download&amp;tid=212771</link>
+				<guid>http://www.nyaa.eu/?page=torrentinfo&amp;tid=212771</guid>
+				<description><![CDATA[http://www.fileserve.com/file/jHFxepz
+				<div>[ 31 seeder(s), 1 leecher(s), 2971 completed - 343.4 MiB ]</div>]]></description>
+				<pubDate>Mon, 09 May 2011 21:26:22 +0000</pubDate>
+			</item><item>
+				<title>[Shikkaku]_Oretachi_ni_Tsubasa_wa_Nai_04_[xvid][480p][E2639C34].avi</title>
+				<category>English-translated Anime</category>
+				<link>http://www.nyaa.eu/?page=download&amp;tid=210220</link>
+				<guid>http://www.nyaa.eu/?page=torrentinfo&amp;tid=210220</guid>
+				<description><![CDATA[http://www.fileserve.com/file/PEJEGbn
+				<div>[ 5 seeder(s), 2 leecher(s), 986 completed - 188.5 MiB ]</div>]]></description>
+				<pubDate>Fri, 29 Apr 2011 12:39:26 +0000</pubDate>
+			</item><item>
+				<title>[Shikkaku]_Oretachi_ni_Tsubasa_wa_Nai_04_[1280x720][AAC][C143CD2E].mkv</title>
+				<category>English-translated Anime</category>
+				<link>http://www.nyaa.eu/?page=download&amp;tid=210069</link>
+				<guid>http://www.nyaa.eu/?page=torrentinfo&amp;tid=210069</guid>
+				<description><![CDATA[http://shikkakufansubs.co.cc/shikkakufansubs/ or #Shikkaku on Rizon
+
+http://www.fileserve.com/file/x85j4W8
+				<div>[ 49 seeder(s), 4 leecher(s), 8393 completed - 333.4 MiB ]</div>]]></description>
+				<pubDate>Thu, 28 Apr 2011 22:32:32 +0000</pubDate>
+			</item><item>
+				<title>[Shikkaku]_Oretachi_ni_Tsubasa_wa_Nai_01_[xvid][480p][813D0955].avi</title>
+				<category>English-translated Anime</category>
+				<link>http://www.nyaa.eu/?page=download&amp;tid=208435</link>
+				<guid>http://www.nyaa.eu/?page=torrentinfo&amp;tid=208435</guid>
+				<description><![CDATA[http://shikkaku.co.cc
+
+#Shikkaku on Rizon
+
+Fileserve:  http://www.fileserve.com/file/SD4gTmg
+
+Recruiting most anyone, but especially TLers!
+				<div>[ 2 seeder(s), 2 leecher(s), 594 completed - 190.1 MiB ]</div>]]></description>
+				<pubDate>Sat, 23 Apr 2011 02:20:51 +0000</pubDate>
+			</item><item>
+				<title>[Shikkaku]_Oretachi_ni_Tsubasa_wa_nai_-_03_[480p][xvid][E32FA5B1].avi</title>
+				<category>English-translated Anime</category>
+				<link>http://www.nyaa.eu/?page=download&amp;tid=208404</link>
+				<guid>http://www.nyaa.eu/?page=torrentinfo&amp;tid=208404</guid>
+				<description><![CDATA[http://shikkaku.co.cc
+
+#Shikkaku on Rizon
+
+Always looking for more TLers/staff
+
+Fileserve:  http://www.fileserve.com/file/CfEdyC7
+				<div>[ 8 seeder(s), 2 leecher(s), 1225 completed - 210.6 MiB ]</div>]]></description>
+				<pubDate>Fri, 22 Apr 2011 23:56:50 +0000</pubDate>
+			</item><item>
+				<title>[Shikkaku]_Oretachi_ni_Tsubasa_wa_Nai_02_[xvid][480p][3F459B5B].avi</title>
+				<category>English-translated Anime</category>
+				<link>http://www.nyaa.eu/?page=download&amp;tid=208397</link>
+				<guid>http://www.nyaa.eu/?page=torrentinfo&amp;tid=208397</guid>
+				<description><![CDATA[http://shikkaku.co.cc
+
+#Shikkaku on Rizon
+
+Always looking for TLers :&#41;
+
+Fileserve:  http://www.fileserve.com/file/Wp8KM6T
+				<div>[ 5 seeder(s), 3 leecher(s), 634 completed - 187.3 MiB ]</div>]]></description>
+				<pubDate>Fri, 22 Apr 2011 23:33:02 +0000</pubDate>
+			</item><item>
+				<title>[Shikkaku]_Oretachi ni_Tsubasa_wa_Nai_03_[1280x720][AAC][DE8D0D4E].mkv</title>
+				<category>English-translated Anime</category>
+				<link>http://www.nyaa.eu/?page=download&amp;tid=208192</link>
+				<guid>http://www.nyaa.eu/?page=torrentinfo&amp;tid=208192</guid>
+				<description><![CDATA[http://shikkaku.co.cc
+or #shikkaku on Rizon
+
+Fileserve: http://www.fileserve.com/file/nfFyfe5
+
+Currently looking for more translators.
+
+
+				<div>[ 48 seeder(s), 7 leecher(s), 9555 completed - 367.2 MiB ]</div>]]></description>
+				<pubDate>Fri, 22 Apr 2011 05:42:59 +0000</pubDate>
+			</item><item>
+				<title>[Shikkaku] Oretachi ni Tsubasa wa Nai 02 [1280x720][6C434522].mkv</title>
+				<category>English-translated Anime</category>
+				<link>http://www.nyaa.eu/?page=download&amp;tid=206625</link>
+				<guid>http://www.nyaa.eu/?page=torrentinfo&amp;tid=206625</guid>
+				<description><![CDATA[shikkaku.co.cc
+
+#Shikkaku on Rizon
+
+Also, we&#39;re always looking for TLers :3
+				<div>[ 33 seeder(s), 4 leecher(s), 5074 completed - 311.8 MiB ]</div>]]></description>
+				<pubDate>Sat, 16 Apr 2011 03:50:32 +0000</pubDate>
+			</item><item>
+				<title>[Shikkaku]_Oretachi_ni_Tsubasa_wa_Nai_01_[1280x720][AAC][32A6DA9A].mkv</title>
+				<category>English-translated Anime</category>
+				<link>http://www.nyaa.eu/?page=download&amp;tid=204650</link>
+				<guid>http://www.nyaa.eu/?page=torrentinfo&amp;tid=204650</guid>
+				<description><![CDATA[http://shikkaku.co.cc or #Shikkaku on Rizon
+
+Earlier one was accidental.
+				<div>[ 31 seeder(s), 5 leecher(s), 5974 completed - 323.7 MiB ]</div>]]></description>
+				<pubDate>Fri, 08 Apr 2011 02:23:15 +0000</pubDate>
+			</item></channel></rss>
