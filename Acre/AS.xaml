@@ -31,7 +31,7 @@
                 </Expander>
             </StackPanel>
         </ScrollViewer>
-        <Button Content="Save" HorizontalAlignment="Right" Margin="0,0,0,15" Name="save" Width="75" Click="save_Click" Height="23" VerticalAlignment="Bottom" />
+        <Button Content="Save" HorizontalAlignment="Right" Margin="0,0,12,15" Name="save" Width="75" Click="save_Click" Height="23" VerticalAlignment="Bottom" />
         <ProgressBar Name="torrentbar" Height="9" VerticalAlignment="Bottom" IsTabStop="False" Visibility="Hidden" />
     </Grid>
 </Window>
