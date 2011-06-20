@@ -33,7 +33,7 @@ namespace Ahodomo.Plugin
         {
             string anime = listname[Libs.IdOf(ids, id)];
             WebClient wc = new WebClient();
-            string link = "http://www.nyaa.eu/?page=rss&user=76430";
+            string link = "http://www.nyaa.eu/?page=rss&user=87309";
             byte[] buffer = wc.DownloadData(link);
             MemoryStream ms = new MemoryStream(buffer);
             StreamReader sr = new StreamReader(ms);
