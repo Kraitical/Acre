@@ -13,7 +13,7 @@
         <Label Content="Path:" HorizontalAlignment="Left" Margin="231,171,0,0" Name="s_path" VerticalAlignment="Top" IsEnabled="False" />
         <Button Content="Browse" Height="23" HorizontalAlignment="Right" Margin="0,223,12,0" Name="path_browse" VerticalAlignment="Top" Width="75" Click="path_browse_Click" IsEnabled="False" />
         <Label Content="Translator Group:" HorizontalAlignment="Left" Margin="231,34,0,0" Name="s_tlist" VerticalAlignment="Top" IsEnabled="False" />
-        <Button Content="Update" Height="23" HorizontalAlignment="Left" Margin="413,274,0,0" Name="manual_update" VerticalAlignment="Top" Width="75" Click="manual_update_Click" />
+        <Button Content="Update" Height="23" HorizontalAlignment="Right" Margin="0,274,12,0" Name="manual_update" VerticalAlignment="Top" Width="75" Click="manual_update_Click" />
         <TextBox Height="22" Margin="231,110,12,0" Name="interval" VerticalAlignment="Top" IsEnabled="False" TextChanged="interval_TextChanged" />
         <Label Content="Interval(sec):" Height="28" HorizontalAlignment="Left" Margin="231,87,0,0" Name="s_int" VerticalAlignment="Top" IsEnabled="False" />
     </Grid>
