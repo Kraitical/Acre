@@ -30,6 +30,11 @@ namespace sgkk.Plugin
 
             return ids;
         }
+
+        public string GetTorrentLink(int id)
+        {
+            throw new NotImplementedException();
+        }
         private Color sgkkgreen = Color.FromArgb(54, 198, 3);
         public float GetStatus(int id)
         {

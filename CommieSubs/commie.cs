@@ -28,7 +28,10 @@ namespace CommieSubs.Plugin
 
             return ids;
         }
-
+        public string GetTorrentLink(int id)
+        {
+            throw new NotImplementedException();
+        }
         public float GetStatus(int id)
         {
             throw new NotSupportedException();

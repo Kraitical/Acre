@@ -28,6 +28,10 @@ namespace Ahodomo.Plugin
         {
             throw new NotSupportedException();
         }
+        public string GetTorrentLink(int id)
+        {
+            throw new NotImplementedException();
+        }
         public Type type { get { return m_type; } set { m_type = value; } }
         public string GetLink() { return ""; }
         public int LatestEpisode(int id)

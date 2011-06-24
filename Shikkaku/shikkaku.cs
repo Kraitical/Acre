@@ -29,6 +29,10 @@ namespace Shikkaku.Plugin
         {
             throw new NotSupportedException();
         }
+        public string GetTorrentLink(int id)
+        {
+            throw new NotImplementedException();
+        }
         public Type type { get { return m_type; } set { m_type = value; } }
         public string GetLink() { return "propably: http://shikkakufansubs.co.cc/shikkakufansubs/"; }
         public int LatestEpisode(int id)
