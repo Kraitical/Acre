@@ -22,6 +22,7 @@ namespace TlPlugin
         float GetStatus(int id); //(sgkk)
         bool StatusSupported();
         string GetLink();
+        string GetTorrentLink(int id);
     }
     /// <summary>
     /// The host
