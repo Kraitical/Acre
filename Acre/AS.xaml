@@ -24,7 +24,7 @@
                                 <TextBox Height="23" Margin="0,25,314,0" Name="port" VerticalAlignment="Top" HorizontalAlignment="Right" Width="120" IsEnabled="False" Text="8080" TextChanged="torrentcredChanged" Grid.Column="1" />
                                 <Label Content="Port:" Height="28" HorizontalAlignment="Right" Margin="0,0,399,0" Name="s_port" VerticalAlignment="Top" IsEnabled="False" Grid.Column="1" />
                                 <Button Content="Help" Height="23" HorizontalAlignment="Right" Margin="0,71,6,0" Name="utorrent_help" VerticalAlignment="Top" Width="75" Grid.Column="1" />
-                                <Button Content="Try" Height="23" HorizontalAlignment="Left" Margin="344,71,0,0" Name="logintry" VerticalAlignment="Top" Width="75" IsEnabled="False" Click="logintry_Click" />
+                                <Button Content="Try" Height="23" HorizontalAlignment="Right" Margin="0,71,233,0" Name="logintry" VerticalAlignment="Top" Width="75" IsEnabled="False" Click="logintry_Click" />
                             </Grid>
                         </StackPanel>
                     </Grid>

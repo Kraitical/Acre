@@ -73,6 +73,7 @@ namespace Acre
                     ex.Tag = entries[i].ArrayId;
                     ex.Expanded += new RoutedEventHandler(ex_Expanded);
                     ex.Content = new EntryControl(entries[i], plugins, new Delegates.AcreVariable<bool>(TorrentState), manualupdate);
+                    entries[i].Parent = ex;
                     animes.Children.Add(ex);
                 }
             }

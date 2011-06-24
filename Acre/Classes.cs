@@ -11,6 +11,8 @@ using System.Web;
 using System.Text.RegularExpressions;
 using System.ComponentModel;
 using System.Diagnostics;
+using System.Windows;
+using System.Windows.Controls;
 namespace Acre
 {
     [Serializable]
@@ -86,11 +88,21 @@ namespace Acre
         private void NameCallback(string name)
         {
             _name = name;
+            try
+            {
+                ((Expander)Parent).Header = name;
+            }
+            catch { }
         }
-
+        public UIElement Parent;
         private void ImageCallback(byte[] img)
         {
             _image = img;
+            try
+            {
+                ((EntryControl)((Expander)Parent).Content).TryPicUpdate(img);
+            }
+            catch { }
         }
     }
     [Serializable]
@@ -140,16 +152,32 @@ namespace Acre
         {
             WebClient wc = new WebClient();
             wc.DownloadDataCompleted += new DownloadDataCompletedEventHandler(wc_DownloadDataCompleted);
-            wc.DownloadDataAsync(new Uri("http://mal-api.com/anime/" + id + "?format=xml"), cb);
+            ANSState stat = new ANSState(id, cb, false);
+            wc.DownloadDataAsync(new Uri("http://mal-api.com/anime/" + id + "?format=xml"), stat);
         }
-
+        private static void GetMALName(int id, Delegates.AcreCall<string> cb)
+        {
+            WebClient wc = new WebClient();
+            wc.DownloadDataCompleted += new DownloadDataCompletedEventHandler(wc_DownloadDataCompleted);
+            ANSState stat = new ANSState(id, cb, true);
+            wc.DownloadDataAsync(new Uri("http://myanimelist.net/anime/" + id + "/"), stat);
+        }
         private static void wc_DownloadDataCompleted(object sender, DownloadDataCompletedEventArgs e)
         {
-            string page = System.Text.Encoding.UTF8.GetString(e.Result);
-            int st = page.IndexOf("<title>") + 7;
-            string name = page.Substring(st, page.IndexOf("</title>", st) - st);
-            name = UnEscapeHtml(name);
-            ((Delegates.AcreCall<string>)e.UserState).Invoke(name);
+            ANSState stat = (ANSState)e.UserState;
+            if (e.Error == null)
+            {
+                string page = System.Text.Encoding.UTF8.GetString(e.Result);
+                int st = page.IndexOf("<title>") + 7;
+                string name = page.Substring(st, page.IndexOf("</title>", st) - st);
+                name = UnEscapeHtml(name);
+                name = name.Replace(" - MyAnimeList.net", "");
+                stat.cb.Invoke(name);
+            }
+            else if (!stat.ismal)
+            {
+                GetMALName(stat.id, stat.cb);
+            }
         }
         public static int[] GetAnimeIds(Dictionary<string, ITlPlugin> plugindir)
         {
@@ -183,26 +211,69 @@ namespace Acre
             return ret;
 
         }
-        internal static void GetImage(int id, Delegates.AcreCall<byte[]> cb)
+        public static void GetImage(int id, Delegates.AcreCall<byte[]> cb)
         {
             WebClient wc = new WebClient();
             wc.DownloadDataCompleted += new DownloadDataCompletedEventHandler(wc_DownloadDataCompleted2);
-            wc.DownloadDataAsync(new Uri("http://mal-api.com/anime/" + id + "?format=xml"), cb);
+            ANSState stat = new ANSState(id, cb, false);
+            wc.DownloadDataAsync(new Uri("http://mal-api.com/anime/" + id + "?format=xml"), stat);
         }
-
+        private static void GetImageMAL(int id, Delegates.AcreCall<byte[]> cb)
+        {
+            WebClient wc = new WebClient();
+            wc.DownloadDataCompleted += new DownloadDataCompletedEventHandler(wc_DownloadDataCompleted2);
+            ANSState stat = new ANSState(id, cb, true);
+            wc.DownloadDataAsync(new Uri("http://myanimelist.net/anime/" + id + "/"), stat);
+        }
         static void wc_DownloadDataCompleted2(object sender, DownloadDataCompletedEventArgs e)
         {
-            string page = System.Text.Encoding.UTF8.GetString(e.Result);
-            int st = page.IndexOf("<image_url>") + 11;
-            string link = page.Substring(st, page.IndexOf("</image_url>", st) - st);
-            WebClient img = new WebClient();
-            img.DownloadDataCompleted += new DownloadDataCompletedEventHandler(img_DownloadDataCompleted);
-            img.DownloadDataAsync(new Uri(link), e.UserState);
+            ANSState stat = (ANSState)e.UserState;
+            if (e.Error == null)
+            {
+                string page = System.Text.Encoding.UTF8.GetString(e.Result);
+                int st = page.IndexOf("<image_url>") + 11;
+                string link = "";
+                if (st < 11) // MAL Page
+                {
+                    //(?<=(<img src=")).*?(?=")
+                    Regex r = new Regex("(?<=(<img src=\")).*?(?=\")");
+                    if (r.IsMatch(page))
+                        link = r.Match(page).Value;
+                }
+                else
+                {
+                    link = page.Substring(st, page.IndexOf("</image_url>", st) - st);
+                }
+                WebClient img = new WebClient();
+                img.DownloadDataCompleted += new DownloadDataCompletedEventHandler(img_DownloadDataCompleted);
+                img.DownloadDataAsync(new Uri(link), stat.cbb);
+            }
+            else if(!stat.ismal)
+            {
+                GetImageMAL(stat.id, stat.cbb);
+            }
         }
 
         static void img_DownloadDataCompleted(object sender, DownloadDataCompletedEventArgs e)
         {
             ((Delegates.AcreCall<byte[]>)e.UserState).Invoke(e.Result);
+        }
+        public class ANSState
+        {
+            public ANSState(int id, Delegates.AcreCall<string> cb, bool mal)
+            {
+                this.id = id;
+                this.cb = cb;
+            }
+            public ANSState(int id, Delegates.AcreCall<byte[]> cb, bool mal)
+            {
+                this.id = id;
+                this.cbb = cb;
+            }
+            public bool ismal;
+            public int id;
+            public Delegates.AcreCall<string> cb;
+            public Delegates.AcreCall<byte[]> cbb;
         }
     }
     public class uTorrent
@@ -406,7 +477,8 @@ namespace Acre
             }
             public int Eta
             {
-                get {
+                get
+                {
                     if (Name != null)
                     {
                         string page2 = GetPage();
@@ -416,7 +488,7 @@ namespace Acre
                             if (r.IsMatch(page2))
                                 hash = r.Match(page2).Value;
                         }
-                        Regex r2 = new Regex("(?<=(\\[\")).*"+hash+".*(?=\\])");
+                        Regex r2 = new Regex("(?<=(\\[\")).*" + hash + ".*(?=\\])");
                         if (r2.IsMatch(page2))
                         {
                             string[] line = r2.Match(page2).Value.Split(new char[] { ',' });
