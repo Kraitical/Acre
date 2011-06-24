@@ -3,32 +3,64 @@ using System.Reflection;
 using System.Collections.Generic;
 using System.Windows.Forms;
 using System.IO;
+using System.Net;
+using System.Net.Sockets;
+using System.Web;
 
 namespace TlPlugin
 {
-	/// <summary>
-	/// Translator Group plugin interface
-	/// </summary>
-	public interface ITlPlugin
-	{
-		string Name{get;}
+    /// <summary>
+    /// Translator Group plugin interface
+    /// </summary>
+    public interface ITlPlugin
+    {
+        string Name { get; }
         ITlPluginHost Host { get; set; }
         int[] GetTranslatedAnimeListIds();
         int LatestEpisode(int id);
-        Type type{get; set;}
+        Type type { get; set; }
         float GetStatus(int id); //(sgkk)
         bool StatusSupported();
         string GetLink();
-	}
-	/// <summary>
-	/// The host
-	/// </summary>
+    }
+    /// <summary>
+    /// The host
+    /// </summary>
     public interface ITlPluginHost
-	{
-		bool Register(ITlPlugin ipi);
-	}
+    {
+        bool Register(ITlPlugin ipi);
+    }
     public class Libs
     {
+        public static string UnEscapeHtml(string input)
+        {
+            string ret = HttpUtility.HtmlDecode(input);
+            do
+            {
+                ret = HttpUtility.HtmlDecode(ret);
+            } while (HttpUtility.HtmlDecode(ret) != ret);
+            return ret;
+
+        }
+        public static byte[] DownloadData(string link)
+        {
+            System.Net.ServicePointManager.Expect100Continue = false;
+            HttpWebRequest req = (HttpWebRequest)WebRequest.Create(link);
+            HttpWebResponse resp = (HttpWebResponse)req.GetResponse();
+
+            List<byte> bl = new List<byte>();
+            Stream s = resp.GetResponseStream();
+            do
+            {
+                int n = s.ReadByte();
+                if (n < 0)
+                    break;
+                bl.Add((byte)n);
+            } while (true);
+            byte[] ret = new byte[bl.Count];
+            bl.CopyTo(ret);
+            return ret;
+        }
         public static int IdOf(string[] where, string what)
         {
             int ret = -1;
