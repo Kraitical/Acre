@@ -15,6 +15,7 @@ using System.Windows;
 using System.Windows.Controls;
 namespace Acre
 {
+    #region Anime
     [Serializable]
     public class AnimeEntry : ISerializable
     {
@@ -131,11 +132,7 @@ namespace Acre
                         string.Format("\r\nStatus({0}):{1}%", (this.Status == 100 ? this.Latest.ToString() : (this.Latest + 1).ToString()), this.Status)));
         }
     }
-    public class Delegates
-    {
-        public delegate void AcreCall<in T>(T data);
-        public delegate T AcreVariable<out T>();
-    }
+    
     public class AnimeTimer : System.Timers.Timer
     {
         public AnimeTimer(int arrayid)
@@ -144,6 +141,12 @@ namespace Acre
             this.AutoReset = true;
         }
         public int ArrayId { get; set; }
+    }
+    #endregion
+    public class Delegates
+    {
+        public delegate void AcreCall<in T>(T data);
+        public delegate T AcreVariable<out T>();
     }
     public class ANS
     {
@@ -170,7 +173,7 @@ namespace Acre
                 string page = System.Text.Encoding.UTF8.GetString(e.Result);
                 int st = page.IndexOf("<title>") + 7;
                 string name = page.Substring(st, page.IndexOf("</title>", st) - st);
-                name = UnEscapeHtml(name);
+                name = Libs.UnEscapeHtml(name);
                 name = name.Replace(" - MyAnimeList.net", "");
                 stat.cb.Invoke(name);
             }
@@ -200,16 +203,6 @@ namespace Acre
                 list.CopyTo(ids);
                 return ids;
             }
-        }
-        public static string UnEscapeHtml(string input)
-        {
-            string ret = HttpUtility.HtmlDecode(input);
-            do
-            {
-                ret = HttpUtility.HtmlDecode(ret);
-            } while (HttpUtility.HtmlDecode(ret) != ret);
-            return ret;
-
         }
         public static void GetImage(int id, Delegates.AcreCall<byte[]> cb)
         {
