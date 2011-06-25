@@ -1,0 +1,11 @@
+*.dll
+*.obj
+*.exe
+
+*.suo
+Thumbs.db
+
+*bin*
+*.old
+*obj*
+Backup
