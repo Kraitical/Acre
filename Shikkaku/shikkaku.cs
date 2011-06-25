@@ -4,6 +4,7 @@ using System.Net;
 using System.IO;
 using System.Collections.Generic;
 using System.Web;
+using System.Text.RegularExpressions;
 
 
 namespace Shikkaku.Plugin
@@ -34,75 +35,47 @@ namespace Shikkaku.Plugin
             throw new NotImplementedException();
         }
         public Type type { get { return m_type; } set { m_type = value; } }
-        public string GetLink() { return "propably: http://shikkakufansubs.co.cc/shikkakufansubs/"; }
-        public int LatestEpisode(int id)
+        public string GetLink() { return "propably: http://shikkakufansubs.co.cc/shikkakufansubs/"; } // 105469
+        public LatestResponse LatestEpisode(int id)
         {
             string anime = listname[Libs.IdOf(ids, id)];
-            WebClient wc = new WebClient();
             string link = "http://www.nyaa.eu/?page=rss&user=105469";
-            byte[] buffer = wc.DownloadData(link);
-            MemoryStream ms = new MemoryStream(buffer);
-            StreamReader sr = new StreamReader(ms);
-            string page = sr.ReadToEnd();
-            List<string> eps = new List<string>();
-            int start = page.IndexOf("<item>");
-            do
+            byte[] buffer = Libs.DownloadData(link);
+            string page = System.Text.Encoding.UTF8.GetString(buffer);
+            Regex r = new Regex("(?<=(<item>)).*?(?=(</item>))", RegexOptions.Singleline);
+            foreach (Match m in r.Matches(page))
             {
-                start = page.IndexOf("<title>", start) + 7;
-                if (start < 7)
+                Regex ir = new Regex("(?<=(<title>)).*?(?=(</title>))");
+                string item = Libs.UnEscapeHtml(m.Value);
+                if (ir.IsMatch(item))
                 {
-                    break;
+                    string title = ir.Match(item).Value;
+                    if (title.Contains(anime))
+                    {
+                        int ep = AnimeTitleToEpNum(title);
+                        if (ep > 0)
+                        {
+                            Regex tl = new Regex("(?<=(<link>)).*?(?=(</link>))");
+                            if (tl.IsMatch(item))
+                                return new LatestResponse(ep, tl.Match(item).Value);
+                        }
+                    }
                 }
-                int end = page.IndexOf("</title>", start);
-                string ep = page.Substring(start, end - start);
-                ep = HttpUtility.HtmlDecode(ep);
-                if (ep.Contains(anime))
-                {
-                    ep = ep.Replace(anime, "");
-                    ep = ep.Replace("_", "");
-                    eps.Add(ep);
-                }
-            } while (true);
-            List<int> epnums = eps.ConvertAll<int>(new Converter<string, int>(AnimeTitleToEpNum));
-            epnums.Sort(new Comparison<int>(SortComp));
-            try
-            {
-                return epnums[0];
             }
-            catch
-            {
-                throw new Exception("problem in:" + Name + ":" + epnums.Count+" page: " + page);
-            }
-        }
-        private int SortComp(int x, int y)
-        {
-            return y- x;
+            return new LatestResponse(-1, "");
         }
         private int AnimeTitleToEpNum(string line)
         {
-            //[Shikkaku]_Oretachi_ni_Tsubasa_wa_Nai_08_[1280x720][AAC][220E86D7].mkv
-            //line = HttpUtility.HtmlDecode(line); // shouldn't be needed
-            do
+            string[] ls = line.Split(new char[] { '_' });
+            foreach (string lin in ls)
             {
-                int st = line.IndexOf('[');
-                int end = line.IndexOf(']') + 1;
-                if (st < 0 || end < 0)
-                    break;
-                line = line.Remove(st, end - st);
-            } while (true);
-            int dot = line.LastIndexOf('.');
-            if (dot < 0)
-                return -1;
-            line = line.Remove(dot);
-            line = line.Replace("_", "");
-            try
-            {
-                return Convert.ToInt32(line);
+                try
+                {
+                    return Convert.ToInt32(lin);
+                }
+                catch { }
             }
-            catch
-            {
-                return -1;
-            }
+            return -1;
         }
         public ITlPluginHost Host
         {

@@ -137,7 +137,7 @@ namespace Acre
             {
                 s2.Status = plugins[ae.TLGroup].GetStatus(ae.AnimeId);
             }
-            s2.Latest = plugins[ae.TLGroup].LatestEpisode(ae.AnimeId);
+            s2.Latest = plugins[ae.TLGroup].LatestEpisode(ae.AnimeId).Ep;
             ni.ShowBalloonTip(1000, ae.Name, s2.ToString(), System.Windows.Forms.ToolTipIcon.None);
             entries[ae.ArrayId].Status = s2;
         }
@@ -150,7 +150,7 @@ namespace Acre
                 {
                     s2.Status = plugins[entries[id].TLGroup].GetStatus(entries[id].AnimeId);
                 }
-                s2.Latest = plugins[entries[id].TLGroup].LatestEpisode(entries[id].AnimeId);
+                s2.Latest = plugins[entries[id].TLGroup].LatestEpisode(entries[id].AnimeId).Ep;
                 if (!s2.Equals(entries[id].Status))
                 {
                     ni.ShowBalloonTip(1000, entries[id].Name, s2.ToString(), System.Windows.Forms.ToolTipIcon.None);

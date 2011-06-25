@@ -66,7 +66,7 @@ namespace sgkk.Plugin
         }
         public Type type { get { return m_type; } set { m_type = value; } }
         public string GetLink() { return "http://www.sgkkfansubs.com/"; }
-        public int LatestEpisode(int id)
+        public LatestResponse LatestEpisode(int id)
         {
             string anime = phpname[Libs.IdOf(ids, id)];
             WebClient wc = new WebClient();
@@ -78,7 +78,7 @@ namespace sgkk.Plugin
             int start = page.LastIndexOf(anime, StringComparison.CurrentCultureIgnoreCase) + anime.Length + 2;
             int end = page.IndexOfAny(new char[] {'_',' ','v'}, start);
             string ss = page.Substring(start, end - start);
-            return Convert.ToInt32(ss);
+            return new LatestResponse(Convert.ToInt32(ss), "");
         }
         public ITlPluginHost Host
         {

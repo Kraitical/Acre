@@ -17,7 +17,7 @@ namespace TlPlugin
         string Name { get; }
         ITlPluginHost Host { get; set; }
         int[] GetTranslatedAnimeListIds();
-        int LatestEpisode(int id);
+        LatestResponse LatestEpisode(int id);
         Type type { get; set; }
         float GetStatus(int id); //(sgkk)
         bool StatusSupported();
@@ -30,6 +30,16 @@ namespace TlPlugin
     public interface ITlPluginHost
     {
         bool Register(ITlPlugin ipi);
+    }
+    public class LatestResponse
+    {
+        public LatestResponse(int ep, string tlink)
+        {
+            Ep = ep;
+            TLink = tlink;
+        }
+        public int Ep { get; set; }
+        public string TLink { get; set; }
     }
     public class Libs
     {

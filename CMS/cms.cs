@@ -34,7 +34,7 @@ namespace CMS.Plugin
         }
         public Type type { get { return m_type; } set { m_type = value; } }
         public string GetLink() { return "http://www.colormesubbed.com"; }
-        public int LatestEpisode(int id)
+        public LatestResponse LatestEpisode(int id)
         {
             string anime = listname[Libs.IdOf(ids, id)];
             string link = "http://www.nyaa.eu/?page=rss&user=91833";
@@ -50,7 +50,7 @@ namespace CMS.Plugin
             }
             List<int> epnums = eps.ConvertAll<int>(new Converter<string, int>(AnimeTitleToEpNum));
             epnums.RemoveAll(new Predicate<int>(NotEp));
-            return epnums[0];
+            return new LatestResponse(epnums[0], "");
         }
         private bool NotEp(int num)
         {

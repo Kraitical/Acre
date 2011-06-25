@@ -38,28 +38,33 @@ namespace CommieSubs.Plugin
         }
         public Type type { get { return m_type; } set { m_type = value; } }
         public string GetLink() { return "http://commiesubs.com/"; }
-        public int LatestEpisode(int id)
+        public LatestResponse LatestEpisode(int id)
         {
             string anime = htmlname[Libs.IdOf(ids, id)];
-            WebClient wc = new WebClient();
             string link = "http://www.nyaa.eu/?page=rss&user=76430";
             byte[] buffer = Libs.DownloadData(link);
             string page = System.Text.Encoding.UTF8.GetString(buffer);
-            Regex r = new Regex("(?<=(<title>)).*?(?=</title>)", RegexOptions.Singleline);
-            List<string> eps = new List<string>();
+            Regex r = new Regex("(?<=(<item>)).*?(?=(</item>))", RegexOptions.Singleline);
             foreach (Match m in r.Matches(page))
             {
-                string line = Libs.UnEscapeHtml(m.Value);
-                if (line.Contains(anime))
-                    eps.Add(line);
+                Regex ir = new Regex("(?<=(<title>)).*?(?=(</title>))");
+                string item = Libs.UnEscapeHtml(m.Value);
+                if (ir.IsMatch(item))
+                {
+                    string title = ir.Match(item).Value;
+                    if (title.Contains(anime))
+                    {
+                        int ep = AnimeTitleToEpNum(title);
+                        if (ep > 0)
+                        {
+                            Regex tl = new Regex("(?<=(<link>)).*?(?=(</link>))");
+                            if (tl.IsMatch(item))
+                                return new LatestResponse(ep, tl.Match(item).Value);
+                        }
+                    }
+                }
             }
-            List<int> epnums = eps.ConvertAll<int>(new Converter<string, int>(AnimeTitleToEpNum));
-            epnums.RemoveAll(new Predicate<int>(NotEp));
-            return epnums[0];
-        }
-        private bool NotEp(int num)
-        {
-            return num < 0;
+            return new LatestResponse(-1, "");
         }
         private int AnimeTitleToEpNum(string line)
         {
